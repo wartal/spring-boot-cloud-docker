@@ -4,8 +4,10 @@ Applcation use https://dev.twitter.com/rest/reference/get/trends/place[twitter t
 
 === Used Frameworks:
 * http://projects.spring.io/spring-boot/[Spring Boot]
+* http://projects.spring.io/spring-data/[Spring Data]
 * http://projects.spring.io/spring-cloud/[Spring Cloud]
 * https://www.docker.com/[Docker]
+* https://angularjs.org/[AngularJs]
 
 === Installation and Getting Started
 Download https://www.docker.com/[Docker for Mac or Windows]. +
