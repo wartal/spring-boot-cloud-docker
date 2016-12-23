@@ -1,0 +1,6 @@
+=Example Spring Boot Docker App
+
+*http://projects.spring.io/spring-boot/[Spring Boot]
+*http://projects.spring.io/spring-cloud/[Spring Cloud]
+*https://dev.twitter.com/rest/reference/get/trends/place[Twitter trends/place api]
+*https://www.docker.com/[Docker]
