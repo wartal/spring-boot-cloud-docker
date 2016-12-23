@@ -1,15 +1,15 @@
 <div class="box">
     <div class="panel panel-primary">
         <div class="panel-heading">
-            Search popular tags
+            Search
         </div>
         <div class="panel-body">
             <form ng-submit="search()">
                 <div class="form-group">
                     <div class='container-fluid typeahead-demo'>
-                        <pre>Location: {{customPopupSelected | json}}</pre>
+                        <pre>Place: {{customPopupSelected | json}}</pre>
                         <input id="location-search" type="text" ng-model="customPopupSelected"
-                               placeholder="Custom popup template"
+                               placeholder="Place ..."
                                uib-typeahead="location as location.name for location in twitterLocations | filter:{name:$viewValue} | limitTo:8 "
                                typeahead-popup-template-url="customPopupTemplate.html"
                                typeahead-template-url="typeahead-match.html" class="form-control">
