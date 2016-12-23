@@ -2,7 +2,7 @@ version: "2"
 
 services:
   twitterservice:
-    image: wartal/spring-boot-cloud-twitterservice:latest
+    build: ./twitter-service/
     command: ["./app/wait-for-it.sh", "configserver:8888", "--", "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
     ports:
       - "8080:8080"
@@ -10,7 +10,7 @@ services:
       - backend
 
   webapp:
-    image: wartal/spring-boot-cloud-webapp:latest
+    build: ./webapp/
     command: ["./app/wait-for-it.sh", "configserver:8888", "--", "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
     ports:
       - "8000:8000"
@@ -30,7 +30,7 @@ services:
       - backend
 
   configserver:
-    image: wartal/spring-boot-cloud-configserver:latest
+    build: ./config-server/
     command: java -Djava.security.egd=file:/dev/./urandom -jar /app/app.jar
     ports:
       - "8888:8888"
