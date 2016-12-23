@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mvn -f config-server/pom.xml clean package &&
-mvn -f twitter-service/pom.xml clean package &&
-mvn -f webapp/pom.xml clean package &&
+cd config-server/ && ./mvnw clean package && cd .. &&
+cd twitter-service/ && ./mvnw clean package && cd .. &&
+cd webapp/ && ./mvnw clean package && cd .. &&
 docker-compose build
