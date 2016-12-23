@@ -1,0 +1,14 @@
+<div class="box">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Search date - {{twitterHistory.createdDate | date : 'MMM d, y h:mm:ss a'}}
+            <p class="list-group-item-text">Country: {{twitterHistory.country}}</p>
+            <p class="list-group-item-text">City: {{twitterHistory.city}}</p>
+        </div>
+        <div class="panel-body">
+              <div class="trends" ng-repeat="trend in twitterHistory.trendEntities">
+                  <a href="https://twitter.com/search?q={{trend.query}}" target="_blank">{{trend.name}}</a>
+              </div>
+        </div>
+    </div>
+</div>

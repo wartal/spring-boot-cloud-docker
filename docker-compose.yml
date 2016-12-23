@@ -1,0 +1,46 @@
+version: "2"
+
+services:
+  twitterservice:
+    build: ./twitter-service/
+    command: ["./app/wait-for-it.sh", "configserver:8888", "--", "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+
+  webapp:
+    build: ./webapp/
+    command: ["./app/wait-for-it.sh", "configserver:8888", "--", "java", "-Djava.security.egd=file:/dev/./urandom", "-jar", "/app/app.jar"]
+    ports:
+      - "8000:8000"
+    networks:
+      - backend
+      - frontend
+
+  db:
+    image: postgres:9.6
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    environment:
+      - POSTGRES_DB=twitter
+      - POSTGRES_USER=twitter
+      - POSTGRES_PASSWORD=mypassword
+    networks:
+      - backend
+
+  configserver:
+    build: ./config-server/
+    command: java -Djava.security.egd=file:/dev/./urandom -jar /app/app.jar
+    ports:
+      - "8888:8888"
+    networks:
+      - backend
+      - frontend
+
+volumes:
+  db-data:
+
+networks:
+  frontend:
+  backend:

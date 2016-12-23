@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Twitter trend</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.6/css/bootstrap.css">
+</head>
+<body ng-cloak ng-app="app">
+<div class="container">
+    <div class="page-header header">
+
+        <div class="row">
+            <h1>Twitter trend api</h1>
+            <h4>Find most popular hashtags</h4>
+            <h5>{{data.message}}</h5>
+        </div>
+        <div class="row">
+            <div class="btn-group" role="group">
+                <a href="#/twitter" type="button" class="btn btn-primary">home page</a>
+            </div>
+        </div>
+    </div>
+
+    <div ng-view></div>
+</div>
+
+<script src="/webjars/angularjs/1.5.6/angular.js"></script>
+<script src="/webjars/angularjs/1.5.6/angular-resource.js"></script>
+<script src="/webjars/angularjs/1.5.6/angular-route.js"></script>
+<script src="/webjars/angular-ui-bootstrap/2.1.4/src/debounce/debounce.js"></script>
+<script src="/webjars/angular-ui-bootstrap/2.1.4/src/position/position.js"></script>
+<script src="/webjars/angular-ui-bootstrap/2.1.4/src/typeahead/typeahead.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/controller.js"></script>
+</body>
+</html>
