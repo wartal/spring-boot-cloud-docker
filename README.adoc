@@ -1,6 +1,30 @@
-=Example Spring Boot Docker App
+= Example Spring Boot Docker App
 
-*http://projects.spring.io/spring-boot/[Spring Boot]
-*http://projects.spring.io/spring-cloud/[Spring Cloud]
-*https://dev.twitter.com/rest/reference/get/trends/place[Twitter trends/place api]
-*https://www.docker.com/[Docker]
+Applcation use https://dev.twitter.com/rest/reference/get/trends/place[twitter trends/place api] to find most popular hashtags in given location.
+
+=== Used Frameworks:
+* http://projects.spring.io/spring-boot/[Spring Boot]
+* http://projects.spring.io/spring-cloud/[Spring Cloud]
+* https://www.docker.com/[Docker]
+
+=== Installation and Getting Started
+Download https://www.docker.com/[Docker for Mac or Windows]. +
+Run:
+[indent=0]
+----
+	$ docker-compose up
+----
+
+The webapp will be running at http://localhost:8000
+
+=== Building from Source
+Build projects and docker images:
+[indent=0]
+----
+	$ ./build.sh
+----
+Run:
+[indent=0]
+----
+	$ docker-compose -f docker-compose-local-images.yml up
+----
