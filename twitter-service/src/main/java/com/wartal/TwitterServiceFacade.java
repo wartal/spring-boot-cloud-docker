@@ -2,6 +2,7 @@ package com.wartal;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.wartal.entity.TrendHistoryEntity;
+import com.wartal.twitterapi.Trend;
 import com.wartal.twitterapi.TrendLocation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,7 +37,8 @@ public class TwitterServiceFacade {
     @RequestMapping(value = "/search/{woeid}", method = GET)
     @JsonView(value = View.Detail.class)
     public TrendHistoryEntity search(@PathVariable Integer woeid) {
-        return twitterService.findAndSaveTrend(woeid);
+        final List<Trend> trends = twitterService.findTrends(woeid);
+        return twitterService.saveTrends(trends, woeid);
     }
 
     @RequestMapping(value = "/locations", method = GET)

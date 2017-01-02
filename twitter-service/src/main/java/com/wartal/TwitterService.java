@@ -1,6 +1,7 @@
 package com.wartal;
 
 import com.wartal.entity.TrendHistoryEntity;
+import com.wartal.twitterapi.Trend;
 import com.wartal.twitterapi.TrendLocation;
 
 import java.util.List;
@@ -26,12 +27,21 @@ public interface TwitterService {
     TrendHistoryEntity findHistoryById(Long trendHistoryId);
 
     /**
-     * Find trend by woeid and store it in database
+     * Find trend by woeid
      *
      * @param woeid <a href="https://dev.twitter.com/rest/reference/get/trends/place">woeid</a>
      * @return
      */
-    TrendHistoryEntity findAndSaveTrend(Integer woeid);
+    List<Trend> findTrends(Integer woeid);
+
+    /**
+     * Save trends
+     *
+     * @param trends trends list
+     * @param woeid  <a href="https://dev.twitter.com/rest/reference/get/trends/place">woeid</a>
+     * @return
+     */
+    TrendHistoryEntity saveTrends(List<Trend> trends, Integer woeid);
 
     /**
      * Find all available locations

@@ -27,7 +27,6 @@ public class LocationRestServiceIntegrationTest {
     public void shouldGetAvailableLocationsTest() {
         final List<TrendLocation> trendLocations = locationRestService.invoke();
         assertNotNull(trendLocations);
-        assertNotNull(trendLocations);
         assertTrue(trendLocations.size() > 0);
     }
 }

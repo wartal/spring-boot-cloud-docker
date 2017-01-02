@@ -38,16 +38,23 @@ public class TwitterServiceImpl implements TwitterService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public TrendHistoryEntity findHistoryById(Long trendHistoryId) {
         return trendHistoryRepository.findOne(trendHistoryId);
     }
 
     @Override
-    @Transactional
-    public TrendHistoryEntity findAndSaveTrend(Integer woeid) {
-        final List<Trend> trends = trendRestService.invoke(woeid);
+    public List<Trend> findTrends(Integer woeid) {
+        return trendRestService.invoke(woeid);
+    }
 
+    @Override
+    public List<TrendLocation> findLocations() {
+        return locationRestService.invoke();
+    }
+
+    @Override
+    @Transactional
+    public TrendHistoryEntity saveTrends(List<Trend> trends, Integer woeid) {
         TrendHistoryEntity trendHistoryEntity = initTrendHistoryEntity(woeid);
         final List<TrendEntity> entities = trends.stream()
                 .map(trendMapper::map)
@@ -55,11 +62,6 @@ public class TwitterServiceImpl implements TwitterService {
 
         trendHistoryEntity.setTrendEntities(entities);
         return trendHistoryRepository.save(trendHistoryEntity);
-    }
-
-    @Override
-    public List<TrendLocation> findLocations() {
-        return locationRestService.invoke();
     }
 
     private TrendHistoryEntity initTrendHistoryEntity(Integer woeid) {
